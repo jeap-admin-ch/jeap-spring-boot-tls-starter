@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>jeap-spring-boot-tls-starter-it-webmvc</artifactId>
-    <name>jeap-spring-boot-tls-starter-it-servlet</name>
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>Integration tests of jeap-spring-boot-tls-starter for the webmvc stack.</description>
     <dependencies>
         <dependency>
