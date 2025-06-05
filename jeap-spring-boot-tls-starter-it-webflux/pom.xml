@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>jeap-spring-boot-tls-starter-it-webflux</artifactId>
-    <name>jeap-spring-boot-tls-starter-it-webflux</name>
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>Integration tests of jeap-spring-boot-tls-starter for the webflux stack.</description>
     <dependencies>
         <dependency>
