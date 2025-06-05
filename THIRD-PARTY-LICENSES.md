@@ -8,7 +8,7 @@ Third-party dependencies grouped by their license type (see [pom.xml](/pom.xml) 
 Apache License Version 2.0
 -------------------------------
 
- * jeap-spring-boot-tls-starter - [ch.admin.bit.jeap:jeap-spring-boot-tls-starter](https://github.com/jeap-admin-ch/jeap-spring-boot-tls-starter/tree/main/jeap-spring-boot-tls-starter)
+ * ch.admin.bit.jeap:jeap-spring-boot-tls-starter - [ch.admin.bit.jeap:jeap-spring-boot-tls-starter](https://github.com/jeap-admin-ch/jeap-spring-boot-tls-starter/tree/main/jeap-spring-boot-tls-starter)
  * Jackson-annotations - [com.fasterxml.jackson.core:jackson-annotations](https://github.com/FasterXML/jackson)
  * Jackson-core - [com.fasterxml.jackson.core:jackson-core](https://github.com/FasterXML/jackson-core)
  * jackson-databind - [com.fasterxml.jackson.core:jackson-databind](https://github.com/FasterXML/jackson)
