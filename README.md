@@ -1,7 +1,7 @@
 ## jEAP Spring Boot TLS Starter
 jEAP Spring Boot TLS Starter is a Spring Boot starter for TLS configuration.
 It activates TLS on the Spring Boot webserver, and provides the option to generate a
-certificate at startup (suitable for encrytion beetn AWS ALB and the Spring Boot app).
+certificate at startup (suitable for encryption between AWS ALB and the Spring Boot app).
 
 ## Changes
 

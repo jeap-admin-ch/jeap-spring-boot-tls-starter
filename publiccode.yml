@@ -14,11 +14,14 @@ softwareType: library
 description:
   en:
     localisedName: jeap-spring-boot-tls-starter
-    shortDescription: TODO (Max. 150 characters)
+    shortDescription: A Spring Boot starter for TLS configuration of the web server.
     longDescription: >
-      TODO (Min. 150 characters)
+      The jEAP Spring Boot TLS Starter is a Spring Boot starter for TLS configuration.
+      It activates TLS on the Spring Boot webserver, and provides the option to generate a
+      certificate at startup (suitable for encryption between AWS ALB and the Spring Boot app).
     features:
-      - TODO
+      - Activates TLS on the Spring Boot webserver
+      - Provides the option to generate a certificate at startup
 legal:
   license: Apache-2.0
 maintenance:
