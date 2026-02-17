@@ -1,4 +1,4 @@
-publiccodeYmlVersion: 0.4.0
+publiccodeYmlVersion: 0.5.0
 name: jeap-spring-boot-tls-starter
 applicationSuite: jEAP
 softwareVersion: 17.53.0
@@ -17,7 +17,7 @@ organisation:
 description:
   en:
     localisedName: jeap-spring-boot-tls-starter
-    shortDescription: A Spring Boot starter for TLS configuration of the web server.
+    shortDescription: This library enables TLS on the Spring Boot web server and optionally generates a certificate at startup.
     longDescription: >
       The jEAP Spring Boot TLS Starter is a Spring Boot starter for TLS configuration.
       It activates TLS on the Spring Boot webserver, and provides the option to generate a
