@@ -29,7 +29,7 @@
 
     <artifactId>jeap-spring-boot-tls-starter-parent</artifactId>
     <name>${project.groupId}:${project.artifactId}</name>
-    <version>18.2.0-alpha-springboot4-SNAPSHOT</version>
+    <version>18.3.0-alpha-springboot4-SNAPSHOT</version>
 
     <parent>
         <artifactId>jeap-internal-spring-boot-parent</artifactId>
