@@ -20,6 +20,9 @@ import java.util.Date;
 
 class PemKeyCertPairFactory {
 
+    private PemKeyCertPairFactory() {
+    }
+
     @SneakyThrows
     static PemKeyCertPair createPemKeyCertPair(String host, Duration validity) {
 

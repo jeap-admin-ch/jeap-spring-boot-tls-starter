@@ -3,15 +3,13 @@ package ch.admin.bit.jeap.tls;
 import lombok.SneakyThrows;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
-import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
-import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.ssl.ClientTlsStrategyBuilder;
+import org.apache.hc.client5.http.ssl.HostnameVerificationPolicy;
 import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
-import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
-import org.apache.hc.core5.http.config.Registry;
-import org.apache.hc.core5.http.config.RegistryBuilder;
+import org.apache.hc.client5.http.ssl.TlsSocketStrategy;
 import org.apache.hc.core5.ssl.SSLContexts;
-import org.apache.hc.core5.ssl.TrustStrategy;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -34,7 +32,8 @@ class EnableTlsEnvPostprocessorIT {
 
     @Test
     void testHttpFails() {
-        assertThatThrownBy(() -> getRestClient("http").get().retrieve().body(String.class))
+        RestClient.ResponseSpec responseSpec = getRestClient("http").get().retrieve();
+        assertThatThrownBy(() -> responseSpec.body(String.class))
                 .isInstanceOf(RestClientException.class)
                 // TLS needed
                 .hasMessageContaining("This combination of host and port requires TLS");
@@ -63,21 +62,21 @@ class EnableTlsEnvPostprocessorIT {
 
     @SneakyThrows
     private ClientHttpRequestFactory createRequestFactoryAcceptingSelfSignedCertificates() {
-        TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
         SSLContext sslContext = SSLContexts.custom()
-                .loadTrustMaterial(null, acceptingTrustStrategy)
+                .loadTrustMaterial(null, (cert, authType) -> true)
                 .build();
-        SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
-                .register("https", sslsf)
-                .register("http", new PlainConnectionSocketFactory())
+        TlsSocketStrategy tlsStrategy = ClientTlsStrategyBuilder.create()
+                .setSslContext(sslContext)
+                .setHostVerificationPolicy(HostnameVerificationPolicy.CLIENT)
+                .setHostnameVerifier(NoopHostnameVerifier.INSTANCE)
+                .buildClassic();
+        PoolingHttpClientConnectionManager connectionManager = PoolingHttpClientConnectionManagerBuilder.create()
+                .setTlsSocketStrategy(tlsStrategy)
                 .build();
-        BasicHttpClientConnectionManager connectionManager =
-                new BasicHttpClientConnectionManager(socketFactoryRegistry);
         CloseableHttpClient httpClient = HttpClients.custom()
                 .setConnectionManager(connectionManager)
                 .build();
-        return  new HttpComponentsClientHttpRequestFactory(httpClient);
+        return new HttpComponentsClientHttpRequestFactory(httpClient);
     }
 
 }

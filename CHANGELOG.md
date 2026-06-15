@@ -7,6 +7,17 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 > - Spring Boot 3 maintenance (bug fixes, patches, and regular updates) continues on branch `release/springboot3`.
 
+## [19.3.1] - 15.06.2026
+
+### Fixed
+
+- Updated deprected spring-boot-starter-web to spring-boot-starter-webmvc.
+- Replaced deprecated `org.springframework.boot.env.EnvironmentPostProcessor` with `org.springframework.boot.EnvironmentPostProcessor` and updated `META-INF/spring.factories` accordingly.
+- Removed duplicated `server.ssl.bundle` string usage and reused constant `SSL_BUNDLE_PROPERTY_NAME`.
+- Refactored integration test assertion lambda to contain only a single potentially throwing invocation.
+- Replaced deprecated Apache HttpClient classes in integration tests (`SSLConnectionSocketFactory`, `PlainConnectionSocketFactory`, `BasicHttpClientConnectionManager`) with non-deprecated TLS/connection manager APIs.
+- Added a private constructor to `PemKeyCertPairFactory` to hide the implicit public constructor (utility class rule `java:S1118`).
+
 ## [19.3.0] - 2026-06-12
 
 ### Changed

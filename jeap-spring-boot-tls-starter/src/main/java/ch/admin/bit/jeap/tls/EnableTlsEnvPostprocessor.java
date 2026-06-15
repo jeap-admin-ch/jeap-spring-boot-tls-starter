@@ -1,8 +1,8 @@
 package ch.admin.bit.jeap.tls;
 
 import org.apache.commons.logging.Log;
+import org.springframework.boot.EnvironmentPostProcessor;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.boot.logging.DeferredLogFactory;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
@@ -94,7 +94,7 @@ public class EnableTlsEnvPostprocessor implements EnvironmentPostProcessor {
     }
 
     private void addPropertiesAsPropertySource(ConfigurableEnvironment environment, Map<String, Object> properties, String propertySourceName) {
-        if (StringUtils.hasText(environment.getProperty("server.ssl.bundle"))) {
+        if (StringUtils.hasText(environment.getProperty(SSL_BUNDLE_PROPERTY_NAME))) {
             log.debug("Server SSL bundle already configured.");
         } else {
             log.info("Adding config properties (%s) to environment in config source %s.".formatted(
