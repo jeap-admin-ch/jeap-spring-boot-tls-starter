@@ -23,6 +23,8 @@ actuator endpoints on port `52873` are served over plain HTTP. The `management.s
 property only affects the management server, so the main `server.ssl.bundle` set by the starter is
 left untouched.
 
+See also: [Spring Boot: management-specific SSL](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#actuator.monitoring.management-specific-ssl).
+
 ## Related
 
 - [Getting started](getting-started.md)

@@ -47,6 +47,12 @@ TLS is a precondition for HTTP/2 in practice (browsers only support HTTP/2 over 
 starter enables TLS anyway, it also sets `server.http2.enabled=true` so the service benefits from the
 more efficient HTTP/2 protocol.
 
+## Further reading
+
+- [Spring Boot: Configure SSL for an embedded web server](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.webserver.configure-ssl)
+- [Spring Boot: Configuring SSL bundles](https://spring.io/blog/2023/06/07/securing-spring-boot-applications-with-ssl#configuring-ssl-bundles)
+- [Spring Boot: Configure HTTP/2](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.webserver.configure-http2)
+
 ## Related
 
 - [Getting started](getting-started.md)
